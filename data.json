@@ -1,0 +1,75 @@
+{
+  "test_drive_duration": "1:30",
+  "measurements": [
+    {
+      "time": "00:00:00",
+      "torque_nm": 250,
+      "horsepower_ps": 200,
+      "tire_pressure_psi": 32,
+      "drag": 0.32,
+      "oil_temperature_celsius": 95,
+      "tire_temperature_celsius": 25,
+      "velocity_kmh": 60
+    },
+    {
+      "time": "00:15:00",
+      "torque_nm": 275,
+      "horsepower_ps": 220,
+      "tire_pressure_psi": 31,
+      "drag": 0.30,
+      "oil_temperature_celsius": 98,
+      "tire_temperature_celsius": 28,
+      "velocity_kmh": 65
+    },
+    {
+      "time": "00:30:00",
+      "torque_nm": 300,
+      "horsepower_ps": 240,
+      "tire_pressure_psi": 30,
+      "drag": 0.28,
+      "oil_temperature_celsius": 102,
+      "tire_temperature_celsius": 30,
+      "velocity_kmh": 70
+    },
+    {
+      "time": "00:45:00",
+      "torque_nm": 280,
+      "horsepower_ps": 225,
+      "tire_pressure_psi": 31,
+      "drag": 0.31,
+      "oil_temperature_celsius": 97,
+      "tire_temperature_celsius": 26,
+      "velocity_kmh": 62
+    },
+    {
+      "time": "01:00:00",
+      "torque_nm": 260,
+      "horsepower_ps": 210,
+      "tire_pressure_psi": 33,
+      "drag": 0.34,
+      "oil_temperature_celsius": 93,
+      "tire_temperature_celsius": 24,
+      "velocity_kmh": 58
+    },
+    {
+      "time": "01:15:00",
+      "torque_nm": 290,
+      "horsepower_ps": 230,
+      "tire_pressure_psi": 29,
+      "drag": 0.27,
+      "oil_temperature_celsius": 99,
+      "tire_temperature_celsius": 29,
+      "velocity_kmh": 68
+    },
+    {
+      "time": "01:30:00",
+      "torque_nm": 320,
+      "horsepower_ps": 260,
+      "tire_pressure_psi": 28,
+      "drag": 0.25,
+      "oil_temperature_celsius": 105,
+      "tire_temperature_celsius": 32,
+      "velocity_kmh": 75
+    }
+  ]
+}
