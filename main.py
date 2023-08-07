@@ -2,8 +2,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def extract_data(filepath, value1_name, value2_name, value3_name, value4_name, value5_name, value6_name, value7_name, value8_name):
+def extract_data(filepath, value1_name, value2_name, value3_name, value4_name, value5_name, value6_name, value7_name,
+                 value8_name):
     json_data = pd.read_json(filepath)
+
+    # TODO allow datasets with less/more than eight entrys per measurement
 
     # Extract data from json
     value1_data = []
@@ -37,14 +40,14 @@ def extract_data(filepath, value1_name, value2_name, value3_name, value4_name, v
 
     # Create dictionary which stores the json data in lists
     extracted_data = {
-        value1_name : value1_data,
-        value2_name : value2_data,
-        value3_name : value3_data,
-        value4_name : value4_data,
-        value5_name : value5_data,
-        value6_name : value6_data,
-        value7_name : value7_data,
-        value8_name : value8_data
+        value1_name: value1_data,
+        value2_name: value2_data,
+        value3_name: value3_data,
+        value4_name: value4_data,
+        value5_name: value5_data,
+        value6_name: value6_data,
+        value7_name: value7_data,
+        value8_name: value8_data
     }
 
     return extracted_data
@@ -70,15 +73,19 @@ def plot_multi_value_graph(x_data, y_data1, y_data2, y_data3, x_name, y_name1, y
 
 
 if __name__ == '__main__':
-    testdrive_data = extract_data("data/data.json", "time", "torque_nm", "horsepower_ps", "tire_pressure_psi", "drag", "oil_temperature_celsius", "tire_temperature_celsius", "velocity_kmh")
+    testdrive_data = extract_data("data/data.json", "time", "torque_nm", "horsepower_ps", "tire_pressure_psi", "drag",
+                                  "oil_temperature_celsius", "tire_temperature_celsius", "velocity_kmh")
 
     plot_single_graph(testdrive_data["time"], testdrive_data["torque_nm"], "time", "torque in nm")
     plot_single_graph(testdrive_data["time"], testdrive_data["horsepower_ps"], "time", "horsepower in ps")
     plot_single_graph(testdrive_data["time"], testdrive_data["tire_pressure_psi"], "time", "tire pressure in psi")
     plot_single_graph(testdrive_data["time"], testdrive_data["drag"], "time", "drag")
-    plot_single_graph(testdrive_data["time"], testdrive_data["oil_temperature_celsius"], "time", "oil temperature in °C")
-    plot_single_graph(testdrive_data["time"], testdrive_data["tire_temperature_celsius"], "time", "tire temperature in °C")
+    plot_single_graph(testdrive_data["time"], testdrive_data["oil_temperature_celsius"], "time",
+                      "oil temperature in °C")
+    plot_single_graph(testdrive_data["time"], testdrive_data["tire_temperature_celsius"], "time",
+                      "tire temperature in °C")
     plot_single_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], "time", "velocity in kmh")
 
-    plot_multi_value_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], testdrive_data["torque_nm"], testdrive_data["horsepower_ps"],
+    plot_multi_value_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], testdrive_data["torque_nm"],
+                           testdrive_data["horsepower_ps"],
                            "time", "velocity in kmh", "torque in nm", "horsepower in ps")
