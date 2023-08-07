@@ -1,0 +1,24 @@
+This project is just a demo regarding the plotting of data.
+Matlab exports in json as well as other json data can be used to generate basic plots.
+
+Dependencies:
+- matplotlib
+- pandas
+
+The format of the given json file should be:
+{
+...
+...
+"measurements" [
+        {
+          "value1": "data1",
+          ...,
+          ...,
+          "value8": "data8",
+        },
+    ]
+}
+
+Furthermore the json file should be placed in the data directory and the path should look like "data/%name_of_your_file%"
+Currently one measurement entry can contain up to eight different value : data pairs.
+In most use cases the value1 would be the x-axis value (often the time value).

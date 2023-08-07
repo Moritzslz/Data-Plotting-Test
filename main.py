@@ -2,49 +2,49 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def extract_data(filepath):
-    test_drive_data = pd.read_json(filepath)
+def extract_data(filepath, value1_name, value2_name, value3_name, value4_name, value5_name, value6_name, value7_name, value8_name):
+    json_data = pd.read_json(filepath)
 
     # Extract data from json
-    time_data = []
-    torque_nm_data = []
-    power_ps_data = []
-    tire_pressure_psi_data = []
-    drag_data = []
-    oil_temperature_celsius_data = []
-    tire_temperature_celsius_data = []
-    velocity_kmh_data = []
+    value1_data = []
+    value2_data = []
+    value3_data = []
+    value4_data = []
+    value5_data = []
+    value6_data = []
+    value7_data = []
+    value8_data = []
 
-    for i in range(len(test_drive_data["measurements"])):
-        time_data.append(test_drive_data["measurements"][i]["time"])
-        torque_nm_data.append(test_drive_data["measurements"][i]["torque_nm"])
-        power_ps_data.append(test_drive_data["measurements"][i]["horsepower_ps"])
-        tire_pressure_psi_data.append(test_drive_data["measurements"][i]["tire_pressure_psi"])
-        drag_data.append(test_drive_data["measurements"][i]["drag"])
-        oil_temperature_celsius_data.append(test_drive_data["measurements"][i]["oil_temperature_celsius"])
-        tire_temperature_celsius_data.append(test_drive_data["measurements"][i]["tire_temperature_celsius"])
-        velocity_kmh_data.append(test_drive_data["measurements"][i]["velocity_kmh"])
+    for i in range(len(json_data["measurements"])):
+        value1_data.append(json_data["measurements"][i][value1_name])
+        value2_data.append(json_data["measurements"][i][value2_name])
+        value3_data.append(json_data["measurements"][i][value3_name])
+        value4_data.append(json_data["measurements"][i][value4_name])
+        value5_data.append(json_data["measurements"][i][value5_name])
+        value6_data.append(json_data["measurements"][i][value6_name])
+        value7_data.append(json_data["measurements"][i][value7_name])
+        value8_data.append(json_data["measurements"][i][value8_name])
 
     # Print data lists
-    print("Time Data:", time_data)
-    print("Torque Data:", torque_nm_data)
-    print("Power Data:", power_ps_data)
-    print("Tire Pressure Data:", tire_pressure_psi_data)
-    print("Drag Data:", drag_data)
-    print("Oil Temperature Data:", oil_temperature_celsius_data)
-    print("Tire Temperature Data:", tire_temperature_celsius_data)
-    print("Velocity Data:", velocity_kmh_data)
+    print(value1_name, value1_data)
+    print(value2_name, value2_data)
+    print(value3_name, value3_data)
+    print(value4_name, value4_data)
+    print(value5_name, value5_data)
+    print(value6_name, value6_data)
+    print(value7_name, value7_data)
+    print(value8_name, value8_data)
 
     # Create dictionary which stores the json data in lists
     extracted_data = {
-        "time": time_data,
-        "torque_nm": torque_nm_data,
-        "power_ps": power_ps_data,
-        "tire_pressure_psi": tire_pressure_psi_data,
-        "drag": drag_data,
-        "oil_temperature_celsius": oil_temperature_celsius_data,
-        "tire_temperature_celsius": tire_temperature_celsius_data,
-        "velocity_kmh": velocity_kmh_data
+        value1_name : value1_data,
+        value2_name : value2_data,
+        value3_name : value3_data,
+        value4_name : value4_data,
+        value5_name : value5_data,
+        value6_name : value6_data,
+        value7_name : value7_data,
+        value8_name : value8_data
     }
 
     return extracted_data
@@ -70,15 +70,15 @@ def plot_multi_value_graph(x_data, y_data1, y_data2, y_data3, x_name, y_name1, y
 
 
 if __name__ == '__main__':
-    testdrive_data = extract_data("data.json")
+    testdrive_data = extract_data("data/data.json", "time", "torque_nm", "horsepower_ps", "tire_pressure_psi", "drag", "oil_temperature_celsius", "tire_temperature_celsius", "velocity_kmh")
 
     plot_single_graph(testdrive_data["time"], testdrive_data["torque_nm"], "time", "torque in nm")
-    plot_single_graph(testdrive_data["time"], testdrive_data["power_ps"], "time", "power in ps")
+    plot_single_graph(testdrive_data["time"], testdrive_data["horsepower_ps"], "time", "horsepower in ps")
     plot_single_graph(testdrive_data["time"], testdrive_data["tire_pressure_psi"], "time", "tire pressure in psi")
     plot_single_graph(testdrive_data["time"], testdrive_data["drag"], "time", "drag")
     plot_single_graph(testdrive_data["time"], testdrive_data["oil_temperature_celsius"], "time", "oil temperature in °C")
     plot_single_graph(testdrive_data["time"], testdrive_data["tire_temperature_celsius"], "time", "tire temperature in °C")
     plot_single_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], "time", "velocity in kmh")
 
-    plot_multi_value_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], testdrive_data["torque_nm"], testdrive_data["power_ps"],
-                           "time", "velocity in kmh", "torque in nm", "power in ps")
+    plot_multi_value_graph(testdrive_data["time"], testdrive_data["velocity_kmh"], testdrive_data["torque_nm"], testdrive_data["horsepower_ps"],
+                           "time", "velocity in kmh", "torque in nm", "horsepower in ps")
